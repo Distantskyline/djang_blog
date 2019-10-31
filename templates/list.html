@@ -1,0 +1,106 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+
+
+    <div id="main-container" class="container clearfix">
+        <section class="post-left">
+
+                <!-- 您的位置 -->
+                <div class="breadcrumb">您的位置： <a itemprop="breadcrumb" href="/">首页</a> »
+                    <span class="current">{{ weizhi }}</span>
+                </div>
+                <!-- 您的位置 -->
+                <!-- 分类 -->
+                <div class="index-main clearfix">
+                    <div class="main-title">
+                        <h4 class="post-left-title">分类：{{ weizhi }}</h4>
+                </div>
+                <!-- /分类 -->
+
+                <!-- 文章列表 -->
+                <div class="row">
+
+                        {% for article in C %}
+                        <div class="article-box clearfix excerpt-1">
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <a href="/show-{{ article.id }}.html" title="{{ article.title }}">
+                                        <img src="media/{{ article.img }}"
+                                             srcset="media/{{ article.img }}"
+                                             alt="{{ article.title }}" class="wp-post-image" width="240" height="160"/></a>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h2>
+                                    <a href="/show-{{ article.id }}.html"
+                                       target="_blank" title="{{ article.title }}">
+                                        {{ article.title }}
+                                    </a>
+                                </h2>
+                                <p class="txtcont hidden-xs">
+                                    <a href="/show-{{ article.id }}.html"
+                                       target="_blank"
+                                       title="{{ article.title }}">{{ article.excerpt }}
+                                    </a>
+                                </p>
+                                <div class="meta">
+                                        <span class="label label-info">
+                                                <a href="/list-{{ article.category.id }}.html">{{ article.category.name }}</a>
+                                        </span>
+                                    <time class="item"><i class="fa fa-clock-o"></i>{{ article.modified_time}}
+                                    </time>
+                                </div>
+                            </div>
+
+                        </div>
+                        {% endfor %}
+                        <div class="pagination">
+                            <ul>
+                                {% if C.has_previous %}
+                                    <li class="prev-page">
+                                        <a href="?page={{ C.previous_page_number }}">上一页</a>
+                                    </li>
+                                {% else %}
+                                    <li class="prev-page"></li>
+                                {% endif %}
+                                    {% for num in C.paginator.page_range %}
+                                        {% if num %}
+                                            {% ifequal num C.number %}
+                                                <li class="active">
+                                                    <span>{{ num }}</span>
+                                                </li>
+                                            {% else %}
+                                                <li><a href="?page={{ num }}">{{ num }}</a></li>
+                                            {% endifequal %}
+                                        {% else %}
+                                            <li class="disabled">
+                                                <span>...</span>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+
+
+                                    {% if C.has_next %}
+                                        <li class="next-page">
+                                            <a href="?page={{ C.next_page_number }}">下一页</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="prev-page"></li>
+                                    {% endif %}
+                            </ul>
+                        </div>
+                </div>
+
+                <!-- /文章列表 -->
+
+
+                </div>
+        </section>
+
+        <!-- 侧边栏 -->
+        {% include 'cebian.html' %}
+        <!-- /侧边栏 -->
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <ul>
+        <h>所有文章：</h>
+        <br/>
+    <br/>
+        {% for wenzhang in all %}
+            <li>
+            文章题目：{{ wenzhang.title }}<br/>
+            摘要：{{ wenzhang.excerpt }}<br/>
+            分类：{{ wenzhang.category}}<br/>
+            标签：{{ wenzhang.tags }}<br/>
+                内容：<br/>
+                    {{ wenzhang.body }}<br/>
+            作者：{{ wenzhang.user }}<br/>
+            创建时间：{{ wenzhang.created_time }}<br/>
+            <br/>
+            <br/>
+            </li>
+
+        {% endfor %}
+
+    </ul>
+</div>
+{% endblock %}

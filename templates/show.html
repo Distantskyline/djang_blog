@@ -1,0 +1,84 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+
+    <!-- /主体 -->
+    <div id="main-container" class="container clearfix">
+        <section class="post-left">
+            <div class="breadcrumb">您的位置： <a itemprop="breadcrumb" href="/">首页</a> » <a href="/list-{{ fenlen2.id }}.html">{{ weizhi1 }}</a> »
+                <span class="current">正文</span>
+            </div>
+            <div class="post-main clearfix">
+                <h1 class="post-title">{{ wenzhang.title }}</h1>
+                <div class="post-con clearfix">
+                    <div class="article-meta">
+                        <span class="item">分类：<a href="/list-{{ fenlen2 }}.html" rel="category tag">{{ weizhi }}</a></span>
+                        <span class="item">作者：{{ username }}</span>
+                        <span class="item">浏览：{{ body.views }}</span>
+                        <span class="item">2018年10月7日 17:58</span>
+
+                    </div>
+
+                    <!-- 文章body -->
+                    <article class="article-content">
+                        {{ body.body|safe }}
+                    </article>
+                    <!-- /文章body -->
+
+                    <!-- 文章的所属标签 -->
+                    <div class="post-tag"><span class="fa fa-tags" aria-hidden="true"></span>标签：
+                        {% for tag in Tag %}
+                        <a href="/tag/{{ tag }}" rel="tag">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                    <!-- /文章的所属标签 -->
+
+                    <!-- 上下篇 -->
+                    <div>
+                        <div><b>上一篇：</b>
+                            {% if syp %}
+                                <a href="show-{{ syp.id }}.html" class="article-tag">{{ syp.title }}</a>
+                            {% else %}
+                                没有了
+                            {% endif %}
+                        </div>
+                        <div><b>下一篇：</b>
+                            {% if next %}
+                                <a href="show-{{ next.id }}.html" class="article-tag">{{ next.title }}</a>
+                            {% else %}
+                                没有了
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- /上下篇 -->
+                </div>
+            </div>
+
+            <!-- 感兴趣的，根据同类别的推荐 -->
+            <div class="recommend  hidden-xs">
+                <div class="head clearfix"><span class="sp">您可能感兴趣的:</span></div>
+                <ul>
+                    {% for intersting in tonglei %}
+                    <li>
+                        <div class="pic">
+                            <a href="/show-{{ intersting.id }}.html" title="{{ intersting.title }}"><img
+                                    src="/media/{{ intersting.img }}" srcset="/media/{{ intersting.img }}"
+                                    alt="{{ intersting.title }}" class="wp-post-image" width="145"
+                                    height="100" /></a>
+                        </div>
+                        <a class="descript " href="/show-{{ intersting.id }}.html" rel="bookmark"
+                            title="{{ intersting.title }}">{{ intersting.title }}</a>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+            <!-- /感兴趣的，根据同类别的推荐 -->
+
+        </section>
+
+        {% include 'cebian.html' %}
+
+    </div>
+    <!-- /主体 -->
+
+{% endblock %}

@@ -1,0 +1,106 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+    
+
+<div id="main-container" class="container clearfix">
+        <section class="post-left">
+            <div class="row">
+                <!-- 轮播图 -->
+                <div class="col-md-6">
+                    <div id="featured" class="raxus-slider" data-autoplay="3000" data-keypress="false"
+                         data-thumbnail="bottom">
+                        <ul class="slider-relative" id="relative">
+                            {% for img in B %}
+                                <li class="slide fix-width">
+                                    <a href="{{ img.link_url }}" title="{{ img.text_info }}">
+                                        <img src="media/{{ img.img }}"
+                                             srcset="media/{{ img.img }}"
+                                             alt="img.text_info"
+                                             class="wp-post-imag1e"
+                                             width="370"
+                                             height="290"/>
+                                    </a>
+                                    <span class="text ani-left">
+                                        <strong>{{ img.text_info }}</strong>
+                                    </span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <!-- /轮播图 -->
+
+                <!-- 推荐阅读 -->
+                <div class="col-md-6" >
+                    <div class="hotread " >
+                        <div class="title">推荐阅读</div>
+                            {% for tuijian in E %}
+                                <div class="caption">
+                                    <h4>
+                                        <a href="/show-{{ tuijian.id }}.html" title="{{ tuijian.title }}" style=" font-size: x-large " rel="bookmark">{{ tuijian.title }}</a>
+                                    </h4>
+                                    <p >
+                                        {{ tuijian.excerpt }}</p>
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                <!-- /推荐阅读 -->
+            </div>
+
+
+            <!-- 最新文章 -->
+            <div class="index-main clearfix" >
+                <div class="main-title">
+                    <h4 class="post-left-title fl">最新文章</h4>
+                    <div class="fr"></div>
+                </div>
+                <div class="row">
+                        {% for article in new %}
+                        <div class="article-box clearfix excerpt-1" >
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <a href="/show-{{ article.id }}.html" title="{{ article.title }}">
+                                        <img src="/media/{{ article.img }}"
+                                             srcset="/media/{{ article.img }}"
+                                             alt="{{ article.title }}" class="wp-post-image" width="240" height="160"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h2><a href="/show-{{ article.id }}.html" target="_blank" title="{{ article.title }}">{{ article.title }}</a></h2>
+                                <p class="txtcont hidden-xs">
+                                    <a href="/show-{{ article.id }}.html" target="_blank" title="{{ article.title }}">{{ article.excerpt }}</a></p>
+                                <div class="meta"><span class="label label-info">
+                                    <a href="/list-{{ article.category.id }}.html">{{ article.category.name}}</a></span>
+                                    <time class="item"><i class="fa fa-clock-o"></i>{{ article.modified_time}}
+                                    </time>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                <!-- /最新文章 -->
+            </div>
+
+
+        </section>
+
+
+
+        {% include 'cebian.html' %}
+
+        <!-- 底部链接 -->
+        <div class="FriendLink hidden-xs clearfix">
+            <div class="title"><h3>友情链接：</h3></div>
+            <ul class="clears">
+                    {% for url in Url %}
+                    <li><a href="{{ url.link_url }}" target="_blank">{{ url.name }}</a></li>
+                    {% endfor %}
+            </ul>
+        </div>
+        <!-- /底部链接 -->
+ </div>
+
+{% endblock %}
+
+

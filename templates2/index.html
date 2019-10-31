@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+    {% for list in list %}
+        <li>
+        {{ list }}
+        </li>
+    {% endfor %}
+
+    {% for x,y in dict.items %}
+        <li>
+        {{ x }} - {{ y }}
+        </li>
+    {% endfor %}
+
+    </div>
+{% endblock %}

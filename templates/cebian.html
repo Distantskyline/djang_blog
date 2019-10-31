@@ -1,0 +1,84 @@
+<aside class="post-right hidden-xs">
+            <!-- 热门文章排行（按照浏览量） -->
+            <section class="widget post-right-item">
+                <h4 class="post-right-title">热门文章排行</h4>
+                <ol class="hot-list">
+                        {% for hotart in hot %}
+                        <li>
+                            <a href="/show-{{ hotart.id }}.html" title="{{ hotart.title }}">{{ hotart.title }}</a>
+                        </li>
+                        {% endfor %}
+
+                </ol>
+            </section>
+            <!-- /热门文章排行（按照浏览量） -->
+
+            <!-- 热门推荐（根据tui表的iD） -->
+            <section class="widget post-right-item"><h4 class="post-right-title">热门推荐</h4>
+                <ul class="post-new">
+
+                        {% for tuijian2 in F %}
+                        <li>
+
+                            <div class="img">
+                                <a href="/show-{{ tuijian2.id }}.html" title="{{ tuijian2.title }}"><img src="/media/{{ tuijian2.img }}"
+                                                                       srcset="/media/{{ tuijian2.img }}" alt="{{ tuijian2.title }}"
+                                                                       class="wp-post-image" width="120"
+                                                                       height="80"/></a>
+                            </div>
+                            <div class="text">
+                                <h2>
+                                    <a href="/show-{{ tuijian2.id }}.html"
+                                       target="_blank" title="{{ tuijian2.title }}" style="font-size: large">
+                                        {{ tuijian2.title }}
+                                    </a>
+                                </h2>
+                                <br>
+                                    <p class="txtcont hidden-xs">
+                                        <a href="/show-{{ tuijian2.id }}.html"
+                                            target="_blank"
+                                            title="{{ tuijian2.title }}">{{ tuijian2.excerpt }}
+                                        </a>
+                                    </p>
+                                <br>
+                                <br>
+
+                            </div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </section>
+            <!-- /热门推荐（根据tui表的iD） -->
+
+            <!-- 所有标签  -->
+            <section class="widget post-right-item"><h4 class="post-right-title">所有标签</h4>
+                <div class="tags">
+
+
+                        {% for x in D %}
+                            <a href="/tag/{{ x.name }}">{{ x.name }}</a>
+                        {% endfor %}
+                </div>
+            </section>
+            <!-- /所有标签  -->
+
+            <!-- 关注我们 -->
+            <div class="post-right-item">
+                <h4 class="post-right-title">关注我</h4>
+                <div class="wid-about">
+                    <p>欢迎关注！</p>
+                    <img src="../static/picture/QQ.png" alt="QQ名片" width="280" height="280">
+                </div>
+                <div class="wid-about">
+
+                    <p>
+                        <a href="tencent://message/?uin=274262321&Site=Sambow&Menu=yes">🐧QQ在线咨询🐧</a>
+                    </p>
+                    <p><strong>联系方式:</strong></p>
+                    <p>wechat:a1138235831</p>
+                    <p>Email：zhanggengheng@qq.com</p>
+                </div>
+            </div>
+            <!-- /关注我们 -->
+        </aside>

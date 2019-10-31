@@ -1,0 +1,51 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+
+
+    <div id="main-container" class="container clearfix" style="height: 100%">
+
+        <section class="post-left">
+            <div class="breadcrumb">您的位置： <a itemprop="breadcrumb" href="/">首页</a> » <span class="current">关于我们</span>
+            </div>
+            <div class="post-main clearfix">
+                <h1 class="post-title">关于我们</h1>
+                <div class="post-con clearfix">
+                    <div class="article-meta"> <span class="item">2018-10-09</span></div>
+                    <article class="article-content">
+                        <p>about me</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 关注我们 -->
+        <aside class="post-right hidden-xs">
+            <div class="post-right-item">
+                <h4 class="post-right-title">关注我</h4>
+                <div class="wid-about">
+                    <p>欢迎关注！</p>
+                    <img src="../static/picture/QQ.png" alt="QQ名片" width="280" height="280">
+                </div>
+                <br>
+                <div class="wid-about">
+                    <p>
+                        <img src="">
+                        <a href="tencent://message/?uin=274262321&Site=Sambow&Menu=yes">
+                            <img src="http://wpa.qq.com/pa?p=2:1138235831:51">
+                        </a>
+                    </p>
+{#                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=565582090&site=qq&menu=yes">#}
+{#                        <img border="0" src="http://wpa.qq.com/pa?p=2:1138235831:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>#}
+{#                    </a>#}
+                    <p><strong>联系方式:</strong></p>
+                    <p>wechat:a1138235831</p>
+                    <p>Email：zhanggengheng@qq.com</p>
+                </div>
+            </div>
+        </aside>
+        <!-- 关注我们 -->
+    </div>
+
+
+{% endblock %}
